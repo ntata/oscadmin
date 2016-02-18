@@ -20,8 +20,6 @@ UI_TEXT_YES                = "Yes"
 UI_TEXT_NO                 = "No"
 UI_TEXT_OK                 = "OK"
 
-LBL_REALLY_QUIT            = "Really Quit?"
-LBL_SET_SECURITY           = "Set Security/ACL"
 LBL_VERSION                = "Version"
 
 MNU_PROGRAM                = "Program"
@@ -72,12 +70,6 @@ MNU_PROG_ABOUT             = "About"
 MNU_PROG_SYS_INFO          = "Sys Info"
 MNU_PROG_PYTHON_INFO       = "Python Info"
 MNU_PROG_QUIT              = "Quit"
-
-MNU_SEC_SET_ACL            = "Set Security/ACL"
-MNU_SEC_SET_ERASE_PIN      = "Set Erase PIN"
-MNU_SEC_SET_LOCK_PIN       = "Set Lock PIN"
-
-MNU_HELP_1                 = "Help Topic 1"
 
 
 # TT = 'tool tip' (help text for individual fields)
