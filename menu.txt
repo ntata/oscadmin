@@ -1,0 +1,21 @@
+Block Storage (cinder)
+Compute/Virtual Machines (nova)
+Networking (nova)
+Object Storage (swift)
+Security (keystone)
+
+VM Images (glance)
+Dashboard (horizon)
+Bare Metal (ironic)
+Bare Metal (bifrost)
+Telemetry (ceilometer)
+
+Object Storage (Swift)
+    Devices
+    Logs
+    Recon
+    Ring
+    Security
+    Status
+    S3
+
