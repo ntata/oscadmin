@@ -24,6 +24,7 @@ MNU_PLACEHOLDER            = "** placeholder **"
 # ***** Main Menu *****
 MNU_PROGRAM                = "Program"
 MNU_CLUSTER_ADMIN          = "Cluster Admin"
+MNU_SERVERS                = "Servers"
 MNU_BLOCK_STORAGE          = "Block Storage (cinder)"
 MNU_CEPH                   = "Ceph Storage"
 MNU_COMPUTE                = "Compute/VM (nova)"
@@ -51,6 +52,16 @@ MNU_CLSTR_UPTIME           = "Uptime"
 MNU_CLSTR_LOAD_AVG         = "Load Average"
 MNU_CLSTR_OS               = "Operating System"
 MNU_CLSTR_HW_REPORT        = "Hardware Report"
+
+# ***** Servers *****
+MNU_SRV_CPUS               = "CPUs"
+MNU_SRV_DISKS              = "Disks"
+MNU_SRV_FILESYSTEMS        = "Filesystems"
+MNU_SRV_LOGS               = "Logs"
+MNU_SRV_MEMORY             = "Memory"
+MNU_SRV_NET_INTERFACES     = "Network Interfaces"
+MNU_SRV_OS                 = "Operating Systems"
+MNU_SRV_PROCESSES          = "Processes"
 
 # ***** Block Storage *****
 MNU_BLK_STOR_HEALTH        = "Health Check"
@@ -521,6 +532,16 @@ menu_top = menu(title_string, [
         menu_button(MNU_CLSTR_LOAD_AVG,        not_implemented),
         menu_button(MNU_CLSTR_OS,              not_implemented),
         menu_button(MNU_CLSTR_HW_REPORT,       not_implemented)
+    ]),
+    sub_menu(MNU_SERVERS, [
+        menu_button(MNU_SRV_CPUS,              not_implemented),
+        menu_button(MNU_SRV_DISKS,             not_implemented),
+        menu_button(MNU_SRV_FILESYSTEMS,       not_implemented),
+        menu_button(MNU_SRV_LOGS,              not_implemented),
+        menu_button(MNU_SRV_MEMORY,            not_implemented),
+        menu_button(MNU_SRV_NET_INTERFACES,    not_implemented),
+        menu_button(MNU_SRV_OS,                not_implemented),
+        menu_button(MNU_SRV_PROCESSES,         not_implemented)
     ]),
     sub_menu(MNU_BLOCK_STORAGE, [
         menu_button(MNU_BLK_STOR_HEALTH,       not_implemented),
