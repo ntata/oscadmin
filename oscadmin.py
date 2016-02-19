@@ -61,7 +61,9 @@ MNU_SRV_LOGS               = "Logs"
 MNU_SRV_MEMORY             = "Memory"
 MNU_SRV_NET_INTERFACES     = "Network Interfaces"
 MNU_SRV_OS                 = "Operating Systems"
+MNU_SRV_PACKAGES           = "Packages"
 MNU_SRV_PROCESSES          = "Processes"
+MNU_SRV_USERS              = "Users"
 
 # ***** Block Storage *****
 MNU_BLK_STOR_HEALTH        = "Health Check"
@@ -541,7 +543,9 @@ menu_top = menu(title_string, [
         menu_button(MNU_SRV_MEMORY,            not_implemented),
         menu_button(MNU_SRV_NET_INTERFACES,    not_implemented),
         menu_button(MNU_SRV_OS,                not_implemented),
-        menu_button(MNU_SRV_PROCESSES,         not_implemented)
+        menu_button(MNU_SRV_PACKAGES,          not_implemented),
+        menu_button(MNU_SRV_PROCESSES,         not_implemented),
+        menu_button(MNU_SRV_USERS,             not_implemented)
     ]),
     sub_menu(MNU_BLOCK_STORAGE, [
         menu_button(MNU_BLK_STOR_HEALTH,       not_implemented),
