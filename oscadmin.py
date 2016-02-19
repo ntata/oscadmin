@@ -131,15 +131,14 @@ F_TXT = 'text'       # text entry/edit field
 field_mgr = None
 
 
-#####################################################################
 def system_time_millis():
     return int(time.time() * 1000)
 
-#####################################################################
+
 def close_box(button):
     top.pop()
 
-#####################################################################
+
 def display_output_lines(title, output_lines):
     body = [urwid.Text(title), urwid.Divider()]
     for output_line in output_lines:
@@ -154,48 +153,21 @@ def display_output_lines(title, output_lines):
     box = urwid.BoxAdapter(w, height=20)
     top.open_output_box(urwid.Filler(box))
 
-#####################################################################
-def obj_stor_devices():
-    pass
 
-def obj_stor_logs():
-    pass
-
-def obj_stor_middleware():
-    pass
-
-def obj_stor_recon():
-    pass
-
-def obj_stor_rings():
-    pass
-
-def obj_stor_security():
-    pass
-
-def obj_stor_status():
-    pass
-
-def obj_stor_s3():
-    pass
-
-#####################################################################
 def read_file_lines(file_path):
     with open(file_path) as f:
         return f.readlines()
     return None
 
-#####################################################################
+
 class CascadingBoxes(urwid.WidgetPlaceholder):
     max_box_levels = 4
 
-    #################################################################
     def __init__(self, box):
         super(CascadingBoxes, self).__init__(urwid.SolidFill(u'/'))
         self.box_level = 0
         self.open_box(box)
 
-    #################################################################
     def open_box(self, box):
         self.original_widget = urwid.Overlay(urwid.LineBox(box),
             self.original_widget,
@@ -208,7 +180,6 @@ class CascadingBoxes(urwid.WidgetPlaceholder):
             bottom=(self.max_box_levels - self.box_level - 1) * 2)
         self.box_level += 1
 
-    #################################################################
     def open_output_box(self, box):
         self.original_widget = urwid.Overlay(urwid.LineBox(box),
             self.original_widget,
@@ -221,19 +192,17 @@ class CascadingBoxes(urwid.WidgetPlaceholder):
             bottom=3)
         self.box_level += 1
 
-    #################################################################
     def pop(self):
         self.original_widget = self.original_widget[0]
         self.box_level -= 1
 
-    #################################################################
     def keypress(self, size, key):
         if key == 'esc' and self.box_level > 1:
             self.pop()
         else:
             return super(CascadingBoxes, self).keypress(size, key)
 
-#####################################################################
+
 class FieldManager(object):
     """
     This class manages the field data without being entangled in the
@@ -283,7 +252,7 @@ class FieldManager(object):
         else:
             return retval
 
-#####################################################################
+
 def get_field(field_def, fieldmgr):
     fld_label     = field_def[0]
     fld_name      = field_def[1]
@@ -344,21 +313,21 @@ def get_field(field_def, fieldmgr):
     wrapper = urwid.AttrWrap(editwidget, None, {'label':'labelfocus'})
     return urwid.Padding(wrapper, ('fixed left', 3), ('fixed right', 3))
 
-#####################################################################
+
 def form_ok_handler(extra_args, handler, button):
     fieldmgr = extra_args
     dict_values = fieldmgr.get_value_dict()
     if dict_values is not None:
         handler(dict_values)
 
-#####################################################################
+
 def form_button(caption, callback, fieldmgr):
     button = urwid.Button(caption)
     urwid.connect_signal(button, 'click', form_ok_handler,
                          user_args=[fieldmgr, callback])
     return urwid.AttrMap(button, None, focus_map='reversed')
 
-#####################################################################
+
 def menu_button(caption, callback):
     if callback == not_implemented:
         caption = caption + ' (NI)'
@@ -369,24 +338,24 @@ def menu_button(caption, callback):
 
     return urwid.AttrMap(button, btn_attr_map, focus_map=btn_focus_map)
 
-#####################################################################
+
 def sub_menu(caption, choices):
     contents = menu(caption, choices)
     def open_menu(button):
         return top.open_box(contents)
     return menu_button([caption, u'...'], open_menu)
 
-#####################################################################
+
 def menu(title, choices):
     body = [urwid.Text(title), urwid.Divider()]
     body.extend(choices)
     return urwid.ListBox(urwid.SimpleFocusListWalker(body))
 
-#####################################################################
+
 def not_implemented(button):
     message_box("Not yet implemented")
 
-#####################################################################
+
 def run_form(form_title, fields, on_ok_handler):
     global field_mgr
     title = urwid.Text(form_title)
@@ -403,14 +372,14 @@ def run_form(form_title, fields, on_ok_handler):
     #listbox = urwid.ListBox(urwid.SimpleFocusListWalker(form_widgets))
     top.open_box(urwid.Filler(listbox))
 
-#####################################################################
+
 def run_command(cmd, title=None):
     show_running_box(title)
     results = commands.getstatusoutput(cmd)
     hide_running_box()
     return results
 
-#####################################################################
+
 def show_running_box(title=None):
     cur_time = time.time()
     ts_format = '%Y-%m-%d %H:%M:%S'
@@ -428,23 +397,23 @@ def show_running_box(title=None):
     top.open_box(urwid.Filler(urwid.Pile(list_widgets)))
     mainloop.draw_screen()
 
-#####################################################################
+
 def hide_running_box():
     close_box(None)
     mainloop.draw_screen()
 
-#####################################################################
+
 def message_box(message_text):
     text_widget = urwid.Text([message_text, u'\n'])
     ok_button = menu_button(UI_TEXT_OK, close_box)
     top.open_box(urwid.Filler(urwid.Pile([text_widget, ok_button])))
 
-#####################################################################
+
 def program_about(button):
     about_string = "%s\n%s %s" % (PROGRAM_NAME, LBL_VERSION, PROGRAM_VERSION)
     message_box(about_string)
 
-#####################################################################
+
 def program_sys_info(button):
     sys_info_string = ''
 
@@ -461,42 +430,49 @@ def program_sys_info(button):
     else:
         message_box("System information not available")
 
-#####################################################################
+
 def program_python_info(button):
     v = sys.version_info
     version_string = "Python %d.%d.%d %s" % (v.major,v.minor,v.micro,v.releaselevel)
     message_box(version_string)
 
-#####################################################################
+
 def program_quit(button):
     raise urwid.ExitMainLoop()
 
-#####################################################################
+
 def obj_stor_devices(button):
     pass
+
 
 def obj_stor_logs(button):
     pass
 
+
 def obj_stor_middleware(button):
     pass
+
 
 def obj_stor_recon(button):
     pass
 
+
 def obj_stor_rings(button):
     pass
+
 
 def obj_stor_security(button):
     pass
 
+
 def obj_stor_status(button):
     pass
+
 
 def obj_stor_s3(button):
     pass
 
-#####################################################################
+
 def example_form(button):
     cmd = "some_command.sh %s %s" % ("arg1", "arg2")
     rc, output = run_command(cmd, "Some Command")
@@ -515,7 +491,7 @@ def example_form(button):
     else:
         message_box("Unable to run command")
 
-#####################################################################
+
 title_string = "%s (v%s)" % (PROGRAM_NAME,PROGRAM_VERSION)
 
 menu_top = menu(title_string, [
@@ -621,7 +597,7 @@ menu_top = menu(title_string, [
     menu_button(MNU_PROG_QUIT,                 program_quit)
 ])
 
-#####################################################################
+
 def run():
     global top
     global mainloop
@@ -629,12 +605,11 @@ def run():
     mainloop = urwid.MainLoop(top, palette=[('reversed', 'standout', '')])
     mainloop.run()
 
-#####################################################################
+
 def main():
     run()
 
-#####################################################################
-#####################################################################
+
 if __name__=='__main__':
     main()
 
