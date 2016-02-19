@@ -3,14 +3,12 @@ import datetime
 import os.path
 import sys
 import time
-
 import urwid   # python console user interface library
 
 
-SHELL_NAME                 = "bash"
-
 PROGRAM_NAME               = "OpenStack Cluster Admin"
 PROGRAM_VERSION            = "0.1"
+LBL_VERSION                = "Version"
 
 # required and optional indicators for form fields
 REQ                        = "* "
@@ -20,7 +18,6 @@ UI_TEXT_YES                = "Yes"
 UI_TEXT_NO                 = "No"
 UI_TEXT_OK                 = "OK"
 
-LBL_VERSION                = "Version"
 MNU_PLACEHOLDER            = "** placeholder **"
 
 
@@ -64,6 +61,12 @@ MNU_BLK_STOR_IMAGES        = "Images"
 MNU_BLK_STOR_PLUGINS       = "Plugins"
 
 # ***** Ceph *****
+MNU_CEPH_HEALTH            = "Health Check"
+MNU_CEPH_MON               = "Monitors"
+MNU_CEPH_OSD               = "OSD"
+MNU_CEPH_POOLS             = "Pools"
+MNU_CEPH_RGW               = "Rados Gateway"
+MNU_CEPH_SECURITY          = "Security"
 
 # ***** Compute *****
 MNU_COMPUTE_DB             = "Database"
@@ -528,9 +531,12 @@ menu_top = menu(title_string, [
         menu_button(MNU_BLK_STOR_PLUGINS,      not_implemented)
     ]),
     sub_menu(MNU_CEPH, [
-        menu_button(MNU_PLACEHOLDER,           not_implemented),
-        menu_button(MNU_PLACEHOLDER,           not_implemented),
-        menu_button(MNU_PLACEHOLDER,           not_implemented)
+        menu_button(MNU_CEPH_HEALTH,           not_implemented),
+        menu_button(MNU_CEPH_MON,              not_implemented),
+        menu_button(MNU_CEPH_OSD,              not_implemented),
+        menu_button(MNU_CEPH_POOLS,            not_implemented),
+        menu_button(MNU_CEPH_RGW,              not_implemented),
+        menu_button(MNU_CEPH_SECURITY,         not_implemented)
     ]),
     sub_menu(MNU_COMPUTE, [
         menu_button(MNU_COMPUTE_DB,            not_implemented),
