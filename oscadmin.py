@@ -21,55 +21,89 @@ UI_TEXT_NO                 = "No"
 UI_TEXT_OK                 = "OK"
 
 LBL_VERSION                = "Version"
-
-MNU_PROGRAM                = "Program"
-MNU_CLUSTER_ADMIN          = "Cluster Admin"
-MNU_BLOCK_STORAGE          = "Block Storage (cinder)"
-MNU_COMPUTE                = "Compute/VM (nova)"
-MNU_NETWORK                = "Network (neutron)"
-MNU_OBJECT_STORAGE         = "Object Storage (swift)"
-MNU_SECURITY               = "Security (keystone)"
-MNU_HELP                   = "Help"
-
 MNU_PLACEHOLDER            = "** placeholder **"
 
 
-# ***** Cluster Admin *****
-MNU_CLSTR_DEFINE        = "Define Cluster"
-MNU_CLSTR_OPEN          = "Open Cluster"
-MNU_CLSTR_CLOSE         = "Close Cluster"
-MNU_CLSTR_HEALTH        = "Health Check"
-MNU_CLSTR_PING          = "Ping"
-MNU_CLSTR_UPTIME        = "Uptime"
-MNU_CLSTR_LOAD_AVG      = "Load Average"
-MNU_CLSTR_INSTALLED_OS  = "Installed OS"
-MNU_CLSTR_HW_REPORT     = "Hardware Report"
+# ***** Main Menu *****
+MNU_PROGRAM                = "Program"
+MNU_CLUSTER_ADMIN          = "Cluster Admin"
+MNU_BLOCK_STORAGE          = "Block Storage (cinder)"
+MNU_CEPH                   = "Ceph Storage"
+MNU_COMPUTE                = "Compute/VM (nova)"
+MNU_DASHBOARD              = "Dashboard (horizon)"
+MNU_NETWORK                = "Network (neutron)"
+MNU_OBJECT_STORAGE         = "Object Storage (swift)"
+MNU_IMAGES                 = "OS Images (glance)"
+MNU_SECURITY               = "Security (keystone)"
+MNU_HELP                   = "Help"
 
-# ***** Block Storage *****
 
-# ***** Compute *****
-
-# ***** Network *****
-
-# ***** Object Storage *****
-MNU_OBJ_STOR_HEALTH     = "Health Check"
-MNU_OBJ_STOR_DEVICES    = "Devices"
-MNU_OBJ_STOR_LOGS       = "Logs"
-MNU_OBJ_STOR_PROCESSES  = "Running Processes"
-MNU_OBJ_STOR_AUDITOR    = "Auditor"
-MNU_OBJ_STOR_MIDDLEWARE = "Middleware"
-MNU_OBJ_STOR_RECON      = "Recon"
-MNU_OBJ_STOR_RINGS      = "Rings"
-MNU_OBJ_STOR_SECURITY   = "Security"
-MNU_OBJ_STOR_STATUS     = "Status"
-MNU_OBJ_STOR_S3         = "S3"
-
-# ***** Security *****
-
+# ***** Program *****
 MNU_PROG_ABOUT             = "About"
 MNU_PROG_SYS_INFO          = "Sys Info"
 MNU_PROG_PYTHON_INFO       = "Python Info"
 MNU_PROG_QUIT              = "Quit"
+
+# ***** Cluster Admin *****
+MNU_CLSTR_DEFINE           = "Define Cluster"
+MNU_CLSTR_OPEN             = "Open Cluster"
+MNU_CLSTR_CLOSE            = "Close Cluster"
+MNU_CLSTR_HEALTH           = "Health Check"
+MNU_CLSTR_PING             = "Ping"
+MNU_CLSTR_UPTIME           = "Uptime"
+MNU_CLSTR_LOAD_AVG         = "Load Average"
+MNU_CLSTR_OS               = "Operating System"
+MNU_CLSTR_HW_REPORT        = "Hardware Report"
+
+# ***** Block Storage *****
+MNU_BLK_STOR_HEALTH        = "Health Check"
+MNU_BLK_STOR_VOLUMES       = "Volumes"
+MNU_BLK_STOR_ATTACHMENTS   = "Attachments"
+MNU_BLK_STOR_SNAPSHOTS     = "Snapshots"
+MNU_BLK_STOR_IMAGES        = "Images"
+MNU_BLK_STOR_PLUGINS       = "Plugins"
+
+# ***** Ceph *****
+
+# ***** Compute *****
+MNU_COMPUTE_DB             = "Database"
+MNU_COMPUTE_API            = "API"
+MNU_COMPUTE_AUTH           = "Authentication"
+MNU_COMPUTE_FLAVORS        = "Flavors"
+MNU_COMPUTE_IMAGES         = "Images"
+MNU_COMPUTE_INSTANCES      = "Instances"
+
+# ***** Network *****
+MNU_NET_PLUGINS            = "Plugins"
+MNU_NET_AGENTS             = "Agents"
+MNU_NET_PROVIDER_NET       = "Provider Networks"
+MNU_NET_TENANT_NET         = "Tenant Networks"
+MNU_NET_NAMESPACES         = "Namespaces"
+MNU_NET_TRAFFIC            = "Traffic"
+
+# ***** Object Storage *****
+MNU_OBJ_STOR_HEALTH        = "Health Check"
+MNU_OBJ_STOR_DEVICES       = "Devices"
+MNU_OBJ_STOR_LOGS          = "Logs"
+MNU_OBJ_STOR_PROCESSES     = "Running Processes"
+MNU_OBJ_STOR_AUDITOR       = "Auditor"
+MNU_OBJ_STOR_MIDDLEWARE    = "Middleware"
+MNU_OBJ_STOR_RECON         = "Recon"
+MNU_OBJ_STOR_RINGS         = "Rings"
+MNU_OBJ_STOR_SECURITY      = "Security"
+MNU_OBJ_STOR_STATUS        = "Status"
+MNU_OBJ_STOR_S3            = "S3"
+
+# ***** Security *****
+MNU_SEC_USERS              = "Users"
+MNU_SEC_TENANTS            = "Tenants"
+MNU_SEC_ROLES              = "Roles"
+MNU_SEC_CREDENTIALS        = "Credentials"
+MNU_SEC_AUTHENTICATION     = "Authentication"
+MNU_SEC_TOKENS             = "Tokens"
+MNU_SEC_SERVICES           = "Services"
+MNU_SEC_ENDPOINTS          = "Endpoints"
+
 
 
 # TT = 'tool tip' (help text for individual fields)
@@ -481,25 +515,42 @@ menu_top = menu(title_string, [
         menu_button(MNU_CLSTR_PING,            not_implemented),
         menu_button(MNU_CLSTR_UPTIME,          not_implemented),
         menu_button(MNU_CLSTR_LOAD_AVG,        not_implemented),
-        menu_button(MNU_CLSTR_INSTALLED_OS,    not_implemented),
+        menu_button(MNU_CLSTR_OS,              not_implemented),
         menu_button(MNU_CLSTR_HW_REPORT,       not_implemented)
     ]),
     sub_menu(MNU_BLOCK_STORAGE, [
+        menu_button(MNU_BLK_STOR_HEALTH,       not_implemented),
+        menu_button(MNU_BLK_STOR_VOLUMES,      not_implemented),
+        menu_button(MNU_BLK_STOR_ATTACHMENTS,  not_implemented),
+        menu_button(MNU_BLK_STOR_SNAPSHOTS,    not_implemented),
+        menu_button(MNU_BLK_STOR_IMAGES,       not_implemented),
+        menu_button(MNU_BLK_STOR_PLUGINS,      not_implemented)
+    ]),
+    sub_menu(MNU_CEPH, [
         menu_button(MNU_PLACEHOLDER,           not_implemented),
         menu_button(MNU_PLACEHOLDER,           not_implemented),
         menu_button(MNU_PLACEHOLDER,           not_implemented)
     ]),
     sub_menu(MNU_COMPUTE, [
+        menu_button(MNU_COMPUTE_DB,            not_implemented),
+        menu_button(MNU_COMPUTE_API,           not_implemented),
+        menu_button(MNU_COMPUTE_AUTH,          not_implemented),
+        menu_button(MNU_COMPUTE_FLAVORS,       not_implemented),
+        menu_button(MNU_COMPUTE_IMAGES,        not_implemented),
+        menu_button(MNU_COMPUTE_INSTANCES,     not_implemented)
+    ]),
+    sub_menu(MNU_DASHBOARD, [
         menu_button(MNU_PLACEHOLDER,           not_implemented),
         menu_button(MNU_PLACEHOLDER,           not_implemented),
         menu_button(MNU_PLACEHOLDER,           not_implemented)
     ]),
     sub_menu(MNU_NETWORK, [
-        menu_button(MNU_PLACEHOLDER,           not_implemented),
-        menu_button(MNU_PLACEHOLDER,           not_implemented),
-        menu_button(MNU_PLACEHOLDER,           not_implemented),
-        menu_button(MNU_PLACEHOLDER,           not_implemented),
-        menu_button(MNU_PLACEHOLDER,           not_implemented)
+        menu_button(MNU_NET_PLUGINS,           not_implemented),
+        menu_button(MNU_NET_AGENTS,            not_implemented),
+        menu_button(MNU_NET_PROVIDER_NET,      not_implemented),
+        menu_button(MNU_NET_TENANT_NET,        not_implemented),
+        menu_button(MNU_NET_NAMESPACES,        not_implemented),
+        menu_button(MNU_NET_TRAFFIC,           not_implemented)
     ]),
     sub_menu(MNU_OBJECT_STORAGE, [
         menu_button(MNU_OBJ_STOR_HEALTH,       not_implemented),
@@ -514,8 +565,20 @@ menu_top = menu(title_string, [
         menu_button(MNU_OBJ_STOR_STATUS,       obj_stor_status),
         menu_button(MNU_OBJ_STOR_S3,           obj_stor_s3)
     ]),
-    sub_menu(MNU_SECURITY, [
+    sub_menu(MNU_IMAGES, [
+        menu_button(MNU_PLACEHOLDER,           not_implemented),
+        menu_button(MNU_PLACEHOLDER,           not_implemented),
         menu_button(MNU_PLACEHOLDER,           not_implemented)
+    ]),
+    sub_menu(MNU_SECURITY, [
+        menu_button(MNU_SEC_USERS,             not_implemented),
+        menu_button(MNU_SEC_TENANTS,           not_implemented),
+        menu_button(MNU_SEC_ROLES,             not_implemented),
+        menu_button(MNU_SEC_CREDENTIALS,       not_implemented),
+        menu_button(MNU_SEC_AUTHENTICATION,    not_implemented),
+        menu_button(MNU_SEC_TOKENS,            not_implemented),
+        menu_button(MNU_SEC_SERVICES,          not_implemented),
+        menu_button(MNU_SEC_ENDPOINTS,         not_implemented)
     ]),
     sub_menu(MNU_HELP, [
         menu_button(MNU_PLACEHOLDER,           not_implemented),
