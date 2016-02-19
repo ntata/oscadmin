@@ -90,6 +90,7 @@ MNU_OBJ_STOR_AUDITOR       = "Auditor"
 MNU_OBJ_STOR_MIDDLEWARE    = "Middleware"
 MNU_OBJ_STOR_RECON         = "Recon"
 MNU_OBJ_STOR_RINGS         = "Rings"
+MNU_OBJ_STOR_POLICIES      = "Storage Policies"
 MNU_OBJ_STOR_SECURITY      = "Security"
 MNU_OBJ_STOR_STATUS        = "Status"
 MNU_OBJ_STOR_S3            = "S3"
@@ -561,6 +562,7 @@ menu_top = menu(title_string, [
         menu_button(MNU_OBJ_STOR_MIDDLEWARE,   obj_stor_middleware),
         menu_button(MNU_OBJ_STOR_RECON,        obj_stor_recon),
         menu_button(MNU_OBJ_STOR_RINGS,        obj_stor_rings),
+        menu_button(MNU_OBJ_STOR_POLICIES,     not_implemented),
         menu_button(MNU_OBJ_STOR_SECURITY,     obj_stor_security),
         menu_button(MNU_OBJ_STOR_STATUS,       obj_stor_status),
         menu_button(MNU_OBJ_STOR_S3,           obj_stor_s3)
